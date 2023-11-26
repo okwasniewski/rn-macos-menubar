@@ -5690,11 +5690,6 @@ react-native-macos@^0.72.0-0:
     ws "^6.2.2"
     yargs "^17.6.2"
 
-react-native-menubar-extra@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/react-native-menubar-extra/-/react-native-menubar-extra-0.3.1.tgz#4990268108ecdda37d248ad49fc0a9030e898b4f"
-  integrity sha512-fgYXB2idfaCffk43qB7r+KnjlUyEnlWweVTYt1lnHZKEf2ADA+RjYyLvFMUKDmK975j4QKTkNSE4AL1hRgO8fg==
-
 react-native@0.72.7:
   version "0.72.7"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.72.7.tgz#5bf5b6e6a7ff2239e1d634ddc17c71d5a31927db"

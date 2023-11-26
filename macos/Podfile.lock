@@ -282,9 +282,6 @@ PODS:
   - React-jsinspector (0.72.10)
   - React-logger (0.72.10):
     - glog
-  - react-native-menubar-extra (0.3.1):
-    - RCT-Folly (= 2021.07.22.00)
-    - React-Core
   - React-NativeModulesApple (0.72.10):
     - React-callinvoker
     - React-Core
@@ -415,7 +412,6 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native-macos/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native-macos/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native-macos/ReactCommon/logger`)
-  - react-native-menubar-extra (from `../node_modules/react-native-menubar-extra`)
   - React-NativeModulesApple (from `../node_modules/react-native-macos/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native-macos/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native-macos/Libraries/ActionSheetIOS`)
@@ -481,8 +477,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-macos/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native-macos/ReactCommon/logger"
-  react-native-menubar-extra:
-    :path: "../node_modules/react-native-menubar-extra"
   React-NativeModulesApple:
     :path: "../node_modules/react-native-macos/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -542,7 +536,6 @@ SPEC CHECKSUMS:
   React-jsiexecutor: e6683549b4dcca1ebd8c3a8a446ac600725d8911
   React-jsinspector: 91e7f804a37d63c4fd36e530021edd0e8dbb685c
   React-logger: eff74cefd7794e473ae09ab7956549579603d7d6
-  react-native-menubar-extra: f7d11d20237bf59c5710ac6c35d68d1373616edd
   React-NativeModulesApple: 0ec023b1d35632fcaf74bc4b45e29ece1d2fef7b
   React-perflogger: 11e9180508289725c23242420f8815ac6760921f
   React-RCTActionSheet: 14097fdd1b7fce51a7ab8ff9f5d28e5dc6e85ddb

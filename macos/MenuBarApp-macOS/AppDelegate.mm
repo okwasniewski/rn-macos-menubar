@@ -28,10 +28,31 @@
   
   [self unstable_registerLegacyComponents];
 #endif
-  self.rootView = [self createRootViewWithBridge:self.bridge moduleName:self.moduleName initProps:self.initialProps];
+  RCTPlatformView *rootView = [self createRootViewWithBridge:self.bridge moduleName:self.moduleName initProps:self.initialProps];
+  NSViewController *viewController = [[NSViewController alloc] init];
+  viewController.view = rootView;
+  
+  _popover = [[NSPopover alloc] init];
+  _popover.contentSize = NSMakeSize(400, 600);
+  _popover.contentViewController = viewController;
+  if (@available(macOS 14.0, *)) {
+    _popover.hasFullSizeContent = YES;
+  }
+  _statusItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
+  
+  [_statusItem.button setTitle:@"Menubar app"];
+  [_statusItem.button setAction:@selector(toggleMenu:)];
 }
 
-
+- (void)toggleMenu:(NSMenuItem *)sender
+{
+  if (_popover.isShown) {
+    [_popover performClose:sender];
+  } else {
+    [_popover showRelativeToRect:_statusItem.button.bounds ofView:_statusItem.button preferredEdge:NSRectEdgeMinY];
+    [_popover.contentViewController.view.window becomeKeyWindow];
+  }
+}
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
