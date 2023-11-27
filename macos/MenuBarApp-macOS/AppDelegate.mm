@@ -31,13 +31,13 @@
   RCTPlatformView *rootView = [self createRootViewWithBridge:self.bridge moduleName:self.moduleName initProps:self.initialProps];
   NSViewController *viewController = [[NSViewController alloc] init];
   viewController.view = rootView;
+  rootView.frame = NSMakeRect(0, 0, 400, 600);
+    
+  _popoverWindow = [[NSWindow alloc] initWithContentRect:NSZeroRect styleMask:NSWindowStyleMaskBorderless backing:NSBackingStoreBuffered defer:NO];
+  _popoverWindow.contentViewController = viewController;
+  _popoverWindow.autorecalculatesKeyViewLoop = YES;
+  _popoverWindow.level = NSPopUpMenuWindowLevel;
   
-  _popover = [[NSPopover alloc] init];
-  _popover.contentSize = NSMakeSize(400, 600);
-  _popover.contentViewController = viewController;
-  if (@available(macOS 14.0, *)) {
-    _popover.hasFullSizeContent = YES;
-  }
   _statusItem = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
   
   [_statusItem.button setTitle:@"Menubar app"];
@@ -46,11 +46,14 @@
 
 - (void)toggleMenu:(NSMenuItem *)sender
 {
-  if (_popover.isShown) {
-    [_popover performClose:sender];
+  if ([_popoverWindow isVisible]) {
+    [_popoverWindow orderOut:self];
   } else {
-    [_popover showRelativeToRect:_statusItem.button.bounds ofView:_statusItem.button preferredEdge:NSRectEdgeMinY];
-    [_popover.contentViewController.view.window becomeKeyWindow];
+    [_popoverWindow makeKeyAndOrderFront:self];
+    CGPoint origin = _statusItem.button.window.frame.origin;
+    
+    [_popoverWindow setFrameTopLeftPoint:origin];
+    [_popoverWindow.contentViewController.view.window becomeKeyWindow];
   }
 }
 
